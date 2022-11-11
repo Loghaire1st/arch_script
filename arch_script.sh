@@ -1,6 +1,5 @@
 #!/bin/bash
 
-$AWESOME_AUR='https://aur.archlinux.org/awesome-git.git'
 $I3COLOR_AUR='https://aur.archlinux.org/i3lock-color.git'
 $SLACK_AUR='https://aur.archlinux.org/slack-desktop.git'
 $SPOTIFY_AUR='https://aur.archlinux.org/spotify.git'
@@ -48,9 +47,8 @@ sudo pacman -S ${audio_packages[*]}
 sudo systemctl enable bluetooth.service
 
 # Awesome DE
-awesome_packages=('picom' 'rofi' 'gnome-screenshot')
+awesome_packages=('picom' 'rofi' 'gnome-screenshot' 'i3-wm' 'i3status')
 sudo pacman -S ${awesome_packages[*]}
-aur_install $AWESOME_AUR 'awesome-git'
 aur_install $I3COLOR_AUR 'i3lock-color'
 
 # Theme and fonts
@@ -63,7 +61,7 @@ sudo pacman -S ${backup_packages[*]}
 sudo restic -r sftp:remote_backup:/arch_backup restore latest --target /
 
 # Nvim with plugins
-nvim_packages=('neovim' 'python' 'python-pip' 'clangd')
+nvim_packages=('neovim' 'python' 'python-pip' 'clangd' 'lua')
 sudo pacman -S ${nvim_packages[*]}
 pip install python-lsp-server
 
